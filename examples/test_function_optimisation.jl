@@ -11,8 +11,8 @@ result = smoptimize(func.fun, func.sr,
                     iterations=25,
                     num_interpolants=20, #Preferably even number of added processes
                     num_start_samples=5,
-                    rbf_opt_gens=10_000,
-                    infill_iterations=10_000,
+                    rbf_opt_gens=50_000,
+                    infill_iterations=25_000,
                     num_infill_points=1,
                     trace=true,
                         ));
@@ -35,7 +35,7 @@ end
 
 # Plot the results if the optimised function is 2-dimensional
 if length(func.sr) == 2
-    display(plot_fun_2D(func.fun,sr,"Original function"))
+    display(plot_fun_2D(func.fun,func.sr,"Original function"))
     display(plot_fun_2D(x->median(result.sm_interpolant(x)),func.sr,"Estimated function"))
 end
 
